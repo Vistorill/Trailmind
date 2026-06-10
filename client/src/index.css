@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+/* Escaneia todos os componentes React */
+@source "./**/*.{ts,tsx}";
+@source "../index.html";
+
+/* ── Design tokens TrailMind ── */
+@theme {
+  --color-brand: #0fda15;
+  --color-brand-hover: #0bc412;
+  --color-brand-foreground: #052e05;
+  --color-surface: #0f172a;
+  --color-surface-elevated: #1e293b;
+  --color-border: #334155;
+
+  --font-sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+}
+
+:root {
+  --brand: #0fda15;
+  --brand-foreground: #052e05;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-100 antialiased font-sans;
+  }
+
+  h1, h2, h3, h4 {
+    @apply tracking-tight;
+  }
+
+  input, textarea, select {
+    @apply outline-none;
+  }
+
+  code {
+    @apply rounded px-1.5 py-0.5 bg-slate-800 text-brand text-xs;
+  }
+}
+
+@layer components {
+  .page-title {
+    @apply text-2xl font-bold text-slate-100;
+  }
+
+  .page-subtitle {
+    @apply text-slate-400 text-sm;
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border border-slate-700 bg-slate-800 px-4 py-2.5 text-sm text-slate-100
+           placeholder:text-slate-500 focus:border-brand focus:ring-1 focus:ring-brand transition-colors;
+  }
+
+  .card {
+    @apply rounded-2xl border border-slate-800 bg-slate-900 p-6 shadow-lg;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium
+           bg-brand text-brand-foreground hover:bg-brand-hover transition-colors
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium
+           bg-slate-800 text-slate-100 border border-slate-700 hover:bg-slate-700 transition-colors
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .nav-link {
+    @apply flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-colors;
+  }
+
+  .nav-link-active {
+    @apply bg-brand/10 text-brand;
+  }
+
+  .nav-link-inactive {
+    @apply text-slate-400 hover:bg-slate-800 hover:text-slate-100;
+  }
+}
